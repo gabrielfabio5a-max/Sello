@@ -7,6 +7,9 @@ comprobar si el archivo fue adulterado sin depender de un servidor central.
 > Prototipo para el hackathon Avalanche Fuji (Chain ID 43113).
 > "Sello" es un nombre de trabajo.
 
+**Demo publicada:** https://sello-tau.vercel.app/ — la verificación es pública;
+para registrar una huella necesitas una wallet conectada a Fuji.
+
 ## Cómo funciona
 
 1. La web calcula el SHA-256 del archivo **en el navegador** con Web Crypto
