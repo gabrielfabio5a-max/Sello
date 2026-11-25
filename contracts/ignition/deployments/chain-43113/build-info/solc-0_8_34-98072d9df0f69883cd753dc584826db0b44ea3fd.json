@@ -1,0 +1,49 @@
+{
+  "_format": "hh3-sol-build-info-1",
+  "id": "solc-0_8_34-98072d9df0f69883cd753dc584826db0b44ea3fd",
+  "solcVersion": "0.8.34",
+  "solcLongVersion": "0.8.34+commit.80d5c536",
+  "compilerType": "solc",
+  "toolVersions": {
+    "hardhat": "3.22.0"
+  },
+  "userSourceNameMap": {
+    "contracts/SelloRegistry.sol": "project/contracts/SelloRegistry.sol"
+  },
+  "input": {
+    "language": "Solidity",
+    "settings": {
+      "evmVersion": "osaka",
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "outputSelection": {
+        "*": {
+          "": [
+            "ast"
+          ],
+          "*": [
+            "abi",
+            "evm.bytecode.linkReferences",
+            "evm.bytecode.object",
+            "evm.bytecode.opcodes",
+            "evm.bytecode.sourceMap",
+            "evm.deployedBytecode.immutableReferences",
+            "evm.deployedBytecode.linkReferences",
+            "evm.deployedBytecode.object",
+            "evm.deployedBytecode.opcodes",
+            "evm.deployedBytecode.sourceMap",
+            "evm.methodIdentifiers"
+          ]
+        }
+      },
+      "remappings": []
+    },
+    "sources": {
+      "project/contracts/SelloRegistry.sol": {
+        "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.34;\n\ncontract SelloRegistry {\n    struct Record {\n        address registeredBy;\n        uint64 registeredAt;\n        string title;\n    }\n\n    mapping(bytes32 fingerprint => Record) private _records;\n\n    uint256 public totalFingerprints;\n\n    event FingerprintRegistered(\n        bytes32 indexed fingerprint,\n        address indexed registeredBy,\n        uint64 registeredAt,\n        string title\n    );\n\n    error EmptyFingerprint();\n    error AlreadyRegistered(bytes32 fingerprint);\n\n    function registerFingerprint(\n        bytes32 fingerprint,\n        string calldata title\n    ) external {\n        if (fingerprint == bytes32(0)) {\n            revert EmptyFingerprint();\n        }\n        if (_records[fingerprint].registeredBy != address(0)) {\n            revert AlreadyRegistered(fingerprint);\n        }\n\n        uint64 registeredAt = uint64(block.timestamp);\n\n        _records[fingerprint] = Record({\n            registeredBy: msg.sender,\n            registeredAt: registeredAt,\n            title: title\n        });\n        totalFingerprints++;\n\n        emit FingerprintRegistered(\n            fingerprint,\n            msg.sender,\n            registeredAt,\n            title\n        );\n    }\n\n    function verifyFingerprint(\n        bytes32 fingerprint\n    )\n        external\n        view\n        returns (\n            bool registered,\n            address registeredBy,\n            uint64 registeredAt,\n            string memory title\n        )\n    {\n        Record storage record = _records[fingerprint];\n        registered = record.registeredBy != address(0);\n        registeredBy = record.registeredBy;\n        registeredAt = record.registeredAt;\n        title = record.title;\n    }\n}\n"
+      }
+    }
+  }
+}

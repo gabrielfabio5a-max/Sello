@@ -1,0 +1,26 @@
+# Dependencias
+node_modules/
+
+# Variables de entorno (NUNCA subir claves privadas)
+.env
+.env.*
+!.env.example
+
+# Builds y artefactos
+.next/
+out/
+dist/
+coverage/
+/contracts/artifacts/
+/contracts/cache/
+*.tsbuildinfo
+
+# Vercel
+.vercel/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
