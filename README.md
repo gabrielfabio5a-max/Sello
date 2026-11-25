@@ -32,6 +32,7 @@ ya escrito, y la verificación no depende de la base de datos de una empresa.
 | Red            | Avalanche Fuji C-Chain (testnet)                                                                  |
 | Chain ID       | `43113`                                                                                           |
 | Contrato       | [`0x9C0eb8Ab3A42EEB122d774B6089AAEfcdA6BD4aB`](https://testnet.snowtrace.io/address/0x9C0eb8Ab3A42EEB122d774B6089AAEfcdA6BD4aB) |
+| Código fuente  | [Verificado en Snowtrace — pestaña Contract/Code](https://testnet.snowtrace.io/address/0x9C0eb8Ab3A42EEB122d774B6089AAEfcdA6BD4aB#code) (solc `0.8.34`, optimizer 200 runs, MIT) |
 | Despliegue     | [tx `0x120e…a6d5`](https://testnet.snowtrace.io/tx/0x120ee3ae666aa54b463658164dc09025029592492f75eb9bdd4592b8671aa6d5) |
 | Huellas registradas | 2 (al 25-11-2026)                                                                             |
 
